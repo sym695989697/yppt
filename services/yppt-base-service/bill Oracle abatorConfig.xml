@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN" "http://ibatis.apache.org/dtd/abator-config_1_0.dtd" >
+<abatorConfiguration >
+
+  <abatorContext generatorSet="com.ctfo.ibatis.abator.extend.Java2OracleGeneratorSet">
+   
+
+    <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.100.77:1521:chtest"
+      		 userId="yppt_develop" password="MwXM2xjxIhfHkW1A" >
+      <classPathEntry location="D:/tools/toolconfigs/.m2/repository/com/oracle/ojdbc6/11.2.0.3.0/ojdbc6-11.2.0.3.0.jar" />
+    
+    <!--
+    <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.110.161:1521:uaa" userId="CCMS" password="CCMS" >
+      <classPathEntry location="D:/tools/toolconfigs/.m2/repository/com/oracle/ojdbc6/11.2.0.3.0/ojdbc6-11.2.0.3.0.jar" />
+       -->
+    </jdbcConnection>
+    
+    <javaModelGenerator  targetPackage="com.ctfo.yppt.baseservice.bill.beans" targetProject="yppt-base-interface/generated_src" >
+    	<property name="rootClass" value="com.ctfo.common.models.BaseSerializable" />
+    	<property name="enableSubPackages" value="false" />
+    </javaModelGenerator>
+    
+    <sqlMapGenerator targetPackage="com.ctfo.yppt.baseservice.dao.bill.sqlmap" targetProject="yppt-base-service/src/main/resources" />
+    
+    <daoGenerator targetPackage="com.ctfo.yppt.baseservice.dao.bill" targetProject="yppt-base-service/dao_src" type="SPRING-ORACLE">
+    </daoGenerator>
+    
+    <!-- bill manager     -->
+    <table tableName="TS_TRADE_CARD" modelType="flat" domainObjectName="TradeCard" >	
+   		<property name="ignoreQualifiersAtRuntime" value="true" />
+    </table>
+    <table tableName="TS_TRADE_USER_FOR_REBATE" modelType="flat" domainObjectName="TradeUserForRebate" >	
+   		<property name="ignoreQualifiersAtRuntime" value="true" />
+    </table>
+    <table tableName="TS_TRADE_CARD_AREA" modelType="flat" domainObjectName="TradeCardArea" >	
+   		<property name="ignoreQualifiersAtRuntime" value="true" />
+    </table>
+    <table tableName="TS_TRADE_USER" modelType="flat" domainObjectName="TradeUser" >	
+   		<property name="ignoreQualifiersAtRuntime" value="true" />
+    </table>
+    <table tableName="TB_SYS_ANALYSIS_LOG" modelType="flat" domainObjectName="SysAnalysisLog" >	
+   		<property name="ignoreQualifiersAtRuntime" value="true" />
+    </table>
+
+  </abatorContext>
+</abatorConfiguration>

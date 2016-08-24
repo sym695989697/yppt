@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="TB_IC_CARD_RECHARGE_APPLY_EXTEND">
+
+	<resultMap class="com.ctfo.yppt.bean.ICCardRechageApplyBean"
+		id="abatorgenerated_ICRechargeApplyMapResult">
+
+		<result column="APPLY_TIME" jdbcType="DECIMAL" property="tradeTime" />
+		<result column="STATE" jdbcType="VARCHAR" property="tradeStatus" />
+		<result column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="APPLY_ID" jdbcType="VARCHAR" property="applyId" />
+		<result column="CARD_NO" jdbcType="VARCHAR" property="cardNo" />
+		<result column="TRADE_TYPE" jdbcType="VARCHAR" property="tradeType" />
+		<result column="PAY_TYPE" jdbcType="VARCHAR" property="payType" />
+		<result column="MONEY" jdbcType="DECIMAL" property="tradeMoney" />
+		<result column="CARD_ID" jdbcType="VARCHAR" property="cardId" />
+		<!-- <result column="CARD_BALANCE" jdbcType="DECIMAL" property="cardBalance" /> -->
+		<result column="CARD_TYPE" jdbcType="VARCHAR" property="cardType" />
+		<result column="FAILE_REASON" jdbcType="VARCHAR" property="faileReason" />
+		<result column="VEHICLE_NO" jdbcType="VARCHAR" property="vehicleNo" />
+		
+	</resultMap>
+	
+	<resultMap class="com.ctfo.yppt.bean.RechargeApplyDetailInfoBean"
+		id="RechargeInfoResult">
+		<result column="APPLY_TIME" jdbcType="DECIMAL" property="tradeTime" />
+		<result column="CARD_NO" jdbcType="VARCHAR" property="cardNo" />
+		<result column="MONEY" jdbcType="DECIMAL" property="captMoney" />
+		<result column="PAY_WAY" jdbcType="VARCHAR" property="payWay" />
+	</resultMap>
+
+     <sql id="abatorgenerated_paginateRecharge_Where_Clause">
+         WHERE
+			rad.APPLY_ID = ra.ID
+		<isNotEmpty prepend=" AND " property="userId">
+			rad.APPLY_ID in ( 
+				select id from TB_IC_CARD_RECHARGE_APPLY where USER_ID=#userId#
+			)
+		</isNotEmpty>
+
+		<isNotEmpty prepend=" AND " property="threeSwitch">
+			rad.CARD_NO in   (
+			       select 
+			          CARD_NUMBER 
+			       from 
+			          TB_IC_CARD 
+			       where
+                            CARD_NUMBER like '%' || #threeSwitch# || '%' 
+                        or VEHICLE_NO like'%' || #threeSwitch# || '%' 
+                        or TELEPHONE_NUMBER like '%' || #threeSwitch# || '%' 
+			   )
+		</isNotEmpty>
+
+		<isNotEmpty prepend=" AND " property="status">
+			ra.STATE in (#status#)
+		</isNotEmpty>
+		<isNotEmpty prepend=" AND " property="processStatus">
+			ra.STATE not in ('03', '05')
+		</isNotEmpty>
+			AND	ra.STATE not in ( '01', '03')
+		<isNotEmpty prepend=" AND " property="startTime">
+			
+			<![CDATA[ ra.APPLY_TIME >= #startTime# ]]>
+		</isNotEmpty>
+
+		<isNotEmpty prepend=" AND " property="endTime">
+			<![CDATA[ ra.APPLY_TIME <= #endTime# ]]>
+		</isNotEmpty>
+						
+     </sql>
+      <sql id="abatorgenerated_sumRecharge_Where_Clause">
+         WHERE
+			rad.APPLY_ID = ra.ID
+		<isNotEmpty prepend=" AND " property="userId">
+			ra.ID in ( 
+				select id from TB_IC_CARD_RECHARGE_APPLY where USER_ID=#userId#
+			)
+		</isNotEmpty>
+
+		
+
+		<isNotEmpty prepend=" AND " property="status">
+			ra.STATE =#status#
+		</isNotEmpty>
+		
+		<isNotEmpty prepend=" AND " property="startTime">
+			
+			<![CDATA[ ra.APPLY_TIME >= #startTime# ]]>
+		</isNotEmpty>
+
+		<isNotEmpty prepend=" AND " property="endTime">
+			<![CDATA[ ra.APPLY_TIME <= #endTime# ]]>
+		</isNotEmpty>
+						
+     </sql>
+	<select id="abatorgenerated_selectByPaginateRecharge"
+		parameterClass="java.util.Map" resultMap="abatorgenerated_ICRechargeApplyMapResult">
+		
+		SELECT
+			*
+		FROM
+			(
+				SELECT
+					A .*, ROWNUM RN
+				FROM
+					(
+						SELECT
+							ra.ID as APPLY_ID,
+							rad.ID,
+							rad.CARD_ID,
+							ra.APPLY_TIME,
+							ra.STATE,
+							rad.CARD_NO,
+							'recharge' as TRADE_TYPE,
+							ra.PAY_WAY as PAY_TYPE,
+							rad.MONEY/100 as MONEY,
+							rad.CARD_TYPE,
+							rad.FAILE_REASON,
+							rad.VEHICLE_NO
+						FROM
+							TB_IC_RECHARGE_APPLY_DETAIL rad,
+							TB_IC_CARD_RECHARGE_APPLY ra
+							
+							<include refid="TB_IC_CARD_RECHARGE_APPLY_EXTEND.abatorgenerated_paginateRecharge_Where_Clause" />
+						
+						ORDER BY
+							ra.APPLY_TIME DESC
+					) A
+				WHERE	
+					<![CDATA[ROWNUM <= #endRow# ]]>
+			)
+		WHERE
+	    <![CDATA[ RN > #startRow# ]]>
+   </select>
+	
+	<select id="abatorgenerated_countByPaginateRecharge"
+	parameterClass="java.util.Map" resultClass="java.lang.Integer" >
+
+	SELECT
+		count(*) 
+	FROM
+		TB_IC_RECHARGE_APPLY_DETAIL rad,
+		TB_IC_CARD_RECHARGE_APPLY ra
+	    <include refid="TB_IC_CARD_RECHARGE_APPLY_EXTEND.abatorgenerated_paginateRecharge_Where_Clause" />
+					
+	</select>
+	
+	<select id="abatorgenerated_countRecharge"
+	 parameterClass="java.util.Map" resultClass="java.math.BigDecimal" >
+
+		SELECT
+			sum(rad.MONEY) 
+		FROM
+			TB_IC_RECHARGE_APPLY_DETAIL rad,
+			TB_IC_CARD c,
+			TB_IC_CARD_RECHARGE_APPLY ra
+		    <include refid="TB_IC_CARD_RECHARGE_APPLY_EXTEND.abatorgenerated_paginateRecharge_Where_Clause" />
+						
+	</select>
+	<select id="abatorgenerated_sumRecharge"
+	 parameterClass="java.util.Map" resultClass="java.math.BigDecimal" >
+
+		SELECT
+			sum(rad.MONEY) 
+		FROM
+			TB_IC_RECHARGE_APPLY_DETAIL rad,
+			TB_IC_CARD_RECHARGE_APPLY ra
+		    <include refid="TB_IC_CARD_RECHARGE_APPLY_EXTEND.abatorgenerated_sumRecharge_Where_Clause" />
+						
+	</select>
+<!--  abatorgenerated_selectByPaginateRechargeAndTradeInfoForAPP-->
+
+  <resultMap class="com.ctfo.yppt.bean.ICCardRechargeTradeBean"
+		id="abatorgenerated_ICRechargeApplyResult">
+		
+		<result column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="CARD_NO" jdbcType="VARCHAR" property="cardNo" />
+		<result column="VEHICLE_NO" jdbcType="VARCHAR" property="vehicleNo" />
+		<result column="MONEY" jdbcType="DECIMAL" property="money" />
+		<result column="TIME" jdbcType="DECIMAL" property="time" />
+		<result column="TRADE_TYPE" jdbcType="VARCHAR" property="tradeType" />
+	    <result column="STATE" jdbcType="VARCHAR" property="state" />
+	    <result column="COLOR" jdbcType="VARCHAR" property="color" />
+		<result column="FAILE_REASON" jdbcType="VARCHAR" property="faileReason" />
+	    
+	</resultMap>
+	
+	<select id="abatorgenerated_selectByPaginateRechargeAndTradeInfoForAPP"
+		parameterClass="java.util.Map" resultMap="abatorgenerated_ICRechargeApplyResult">
+		
+		SELECT *
+  FROM (SELECT A.*, ROWNUM RN
+          FROM (SELECT *
+                  FROM (
+                         (SELECT d.ID AS ID,
+                                  d.CARD_NO AS CARD_NO,
+                                d.VEHICLE_NO AS VEHICLE_NO,
+                                d.MONEY AS MONEY,
+                                a.APPLY_TIME AS TIME,
+                               'IC-RECHARGE' AS TRADE_TYPE,
+                                a.STATE AS STATE,
+                                c.VEHICLE_COLOR AS COLOR,
+                                d.FAILE_REASON
+                           FROM TB_IC_RECHARGE_APPLY_DETAIL d,
+                                TB_IC_CARD_RECHARGE_APPLY   a,
+                                TB_IC_CARD                  c
+                          WHERE d.APPLY_ID = a.ID
+                            AND c.ID = d.CARD_ID
+                            AND a.STATE not in ( '01', '03')
+                            <isNotEmpty prepend=" AND " property="userId">
+			                            a.USER_ID = #userId#
+                            </isNotEmpty>
+							<isNotEmpty prepend=" AND " property="cardId">
+	                            c.ID = #cardId#
+                            </isNotEmpty>
+                            <isNotEmpty prepend=" AND " property="startTime">
+	                           <![CDATA[a.APPLY_TIME >=  #startTime#]]>
+					 
+                    		 </isNotEmpty>
+		                           ) UNION
+                        (SELECT t. ID AS ID,
+                                t.CARD_NO AS CARD_NO,
+                                t.VEHICLE_NO AS VEHICLE_NO,
+                                t.TRADE_MONEY AS MONEY,
+                                t.TRADE_TIME AS TIME,
+                                'IC-GAS' AS TRADE_TYPE,
+                                '0' AS STATE,
+                                c.VEHICLE_COLOR AS COLOR,
+                                '' as FAILE_REASON
+                           FROM TB_IC_CARD_TRADE_INFO t, TB_IC_CARD c
+                          WHERE t.CARD_ID = c. ID
+                            AND TRADE_TYPE = 'IC-GAS'
+                            <isNotEmpty prepend=" AND " property="cardId">
+			                            c.ID = #cardId#
+		                     </isNotEmpty>
+		                     <isNotEmpty prepend=" AND " property="userId">
+			                            t.USER_ID = #userId#
+		                     </isNotEmpty>
+		                     <isNotEmpty prepend=" AND " property="startTime">
+			                           <![CDATA[t.TRADE_TIME >=  #startTime#]]>
+							 
+		                     </isNotEmpty>
+                            
+                            ) UNION
+                        (SELECT h. ID AS ID,
+                               h.CARD_NO AS CARD_NO,
+                                h.VEHICLE_NO AS VEHICLE_NO,
+                                h.TRADE_MONEY AS MONEY,
+                                h.TRADE_TIME AS TIME,
+                                'IC-GAS' AS TRADE_TYPE,
+                                '0' AS STATE,
+                                h.VEHICLE_COLOR AS COLOR,
+                                '' as FAILE_REASON
+                           FROM TB_IC_CARD_TRADE_INFO_HISTORY h, TB_IC_CARD c
+                          WHERE h.CARD_ID = c. ID
+                            AND TRADE_TYPE = 'IC-GAS'
+                            <isNotEmpty prepend=" AND " property="cardId">
+			                            c.ID = #cardId#
+		                        </isNotEmpty>
+		                        <isNotEmpty prepend=" AND " property="userId">
+			                            h.USER_ID = #userId#
+		                        </isNotEmpty>
+
+                                <isNotEmpty prepend=" AND " property="startTime">
+			                           <![CDATA[t.TRADE_TIME >=  #startTime#]]>
+		                     	</isNotEmpty>
+		                       )
+		                      )
+                 ORDER BY TIME DESC) A
+       WHERE	
+					<![CDATA[ROWNUM <= #endRow# ]]>
+			)
+		WHERE
+	    <![CDATA[ RN > #startRow# ]]>
+   </select>
+
+<select id="abatorgenerated_countByPaginateRechargeAndTradeInfoForAPP"
+		parameterClass="java.util.Map" resultClass="java.lang.Integer">
+	
+		SELECT
+			SUM(NUM)
+		FROM
+			(
+                         (SELECT  count(*) as NUM 
+                           FROM TB_IC_RECHARGE_APPLY_DETAIL d,
+                                TB_IC_CARD_RECHARGE_APPLY   a,
+                                TB_IC_CARD                  c
+                          WHERE d.APPLY_ID = a.ID
+                            AND c.ID = d.CARD_ID
+                            AND a.STATE not in ( '01', '03')
+                            <isNotEmpty prepend=" AND " property="userId">
+			                            a.USER_ID = #userId#
+                            </isNotEmpty>
+							<isNotEmpty prepend=" AND " property="cardId">
+	                            c.ID = #cardId#
+                            </isNotEmpty>
+                            <isNotEmpty prepend=" AND " property="startTime">
+	                           <![CDATA[a.APPLY_TIME >=  #startTime#]]>
+					 </isNotEmpty>
+		                       ) UNION
+                        (SELECT count(*) AS NUM
+                           FROM TB_IC_CARD_TRADE_INFO t, TB_IC_CARD c
+                          WHERE t.CARD_ID = c. ID
+                            AND TRADE_TYPE = 'IC-GAS'
+                            <isNotEmpty prepend=" AND " property="cardId">
+			                            c.ID = #cardId#
+		                     </isNotEmpty>
+		                     <isNotEmpty prepend=" AND " property="userId">
+			                            t.USER_ID = #userId#
+		                     </isNotEmpty>
+		                     <isNotEmpty prepend=" AND " property="startTime">
+			                           <![CDATA[t.TRADE_TIME >=  #startTime#]]>
+							 
+		                     </isNotEmpty>
+                            
+                            ) UNION
+                        (SELECT count(*) AS NUM
+                           FROM TB_IC_CARD_TRADE_INFO_HISTORY h, TB_IC_CARD c
+                          WHERE h.CARD_ID = c. ID
+                            AND TRADE_TYPE = 'IC-GAS'
+                            <isNotEmpty prepend=" AND " property="cardId">
+			                            c.ID = #cardId#
+		                        </isNotEmpty>
+		                        <isNotEmpty prepend=" AND " property="userId">
+			                            h.USER_ID = #userId#
+		                        </isNotEmpty>
+
+                                <isNotEmpty prepend=" AND " property="startTime">
+			                           <![CDATA[t.TRADE_TIME >=  #startTime#]]>
+		                     	</isNotEmpty>
+		                       )
+			
+		)
+   </select>
+   	<select id="countSingleRecharge"
+	 parameterClass="java.util.Map" resultClass="java.math.BigDecimal" >
+
+		SELECT
+			sum(rad.MONEY) 
+		FROM
+			TB_IC_RECHARGE_APPLY_DETAIL rad,
+			TB_IC_CARD c,
+			TB_IC_CARD_RECHARGE_APPLY ra
+		WHERE 
+		   rad.CARD_ID = c. ID
+		AND rad.APPLY_ID = ra.ID
+		<isNotEmpty prepend=" AND " property="status">
+			ra.STATE =#status#
+		</isNotEmpty>
+		<isNotEmpty prepend=" AND " property="cardId">
+			rad.CARD_ID=#cardId#
+		</isNotEmpty>
+
+		<isNotEmpty prepend=" AND " property="startTime">
+			
+			<![CDATA[ ra.APPLY_TIME >= #startTime# ]]>
+		</isNotEmpty>
+
+		<isNotEmpty prepend=" AND " property="endTime">
+			<![CDATA[ ra.APPLY_TIME <= #endTime# ]]>
+		</isNotEmpty>
+					
+						
+	</select>
+	
+		<select id="queryRechargeInfo" parameterClass="java.util.Map" resultMap="RechargeInfoResult">
+
+		SELECT
+			rad.CARD_NO,
+			rad.MONEY,
+			ra.APPLY_TIME,
+			ra.PAY_WAY
+		FROM
+			TB_IC_RECHARGE_APPLY_DETAIL rad,
+			TB_IC_CARD_RECHARGE_APPLY ra
+		WHERE 
+				rad.APPLY_ID = ra.ID
+		<isNotEmpty prepend=" AND " property="detailId">
+			rad.id=#detailId#
+		</isNotEmpty>
+		
+	</select>
+	
+</sqlMap>

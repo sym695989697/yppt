@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+					    http://www.springframework.org/schema/aop
+	                    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- 车辆中心Hessian API -->	
+	<bean id="iCallService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="${ICallService.location}" />
+		<property name="serviceInterface" value="com.vims.external.intf.ICallService" />
+	</bean>
+	
+	<!-- 短信服务Hessian API -->
+	<bean id="iNotificationService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="${MESSAGE_HESSIAN_URL}" />
+		<property name="serviceInterface" value="com.ctfo.notification.hessian.intf.INotificationService" />
+	</bean>
+	
+	<!-- 油卡后台服务的Hessian API -->	
+	<bean id="iCRechargeApplyManager" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="${iCRechargeApplyManager.location}" />
+		<property name="serviceInterface" value="com.ctfo.yppt.baseservice.recharge.intf.IICRechargeApplyManager" />
+	</bean>
+
+</beans>

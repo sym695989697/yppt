@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+/*弹层1*/
+.layer{
+    width:838px;
+	height:186px;
+	border:3px solid #f03b00;
+	background-color:#fff;
+	border-radius:10px 10px 10px 10px;
+}
+.layers table{
+ width:774px;
+ text-align:center; 
+ margin:34px auto;
+}
+.layers_pic,.layers_pic2,.layers_pic3,.layers_pic4,.layers_pic5,.layers_pic7,.layers_pic8,.layers_pic9
+,.layers_pic10,.layers_pic11{
+ width:190px;
+ height:66px;
+}
+.layers_pic{
+ background:url(../../images/pops/layer_pic.png) no-repeat center;
+}
+.layers_pic2{
+ background:url(../../images/pops/layer_pic2.png) no-repeat center;
+}
+.layers_pic3{
+ background:url(../../images/pops/layer_pic3.png) no-repeat center;
+}
+.layers_pic4{
+ background:url(../../images/pops/layer_pic4.png) no-repeat center;
+}
+.layers_pic5{
+ background:url(../../images/pops/layer_pic5.png) no-repeat center;
+}
+.layers_pic6{
+ background:url(../../images/pops/layer_pic6.png) no-repeat 0px 25px;
+ width:55px;
+}
+.layers_color{
+ color:#ff6200;
+}
+/*弹层2*/
+.layers_pic7{
+ background:url(../../images/pops/layer_pic7.png) no-repeat center;
+}
+.layers_pic8{
+ background:url(../../images/pops/layer_pic8.png) no-repeat center;
+}
+.layers_pic9{
+ background:url(../../images/pops/layer_pic9.png) no-repeat center;
+}
+.layers_pic10{
+ background:url(../../images/pops/layer_pic10.png) no-repeat center;
+}
+.layers_pic11{
+ background:url(../../images/pops/layer_pic11.png) no-repeat center;
+}
+/*弹层3*/
+.pro_frames img{
+ position:relative;
+ top:77px;
+}
+/*弹层4*/
+.pro_logins_img img{
+ cursor:pointer;
+ position:relative;
+ top:72px;
+}
+.pro_logins_con2{
+ background:url(../../images/pops/pro_pic2.png) no-repeat -320px 0px;
+ width:316px;
+ height:184px;
+}
+.pro_logins_con2 .logins2_conter{
+ position:relative;
+ top:49px;left:5px;
+}
+.pro_logins_con2 .logins2_colse{
+ position:relative;
+ left:238px;top:-49px;
+
+}
+.pro_logins_con2 .logins2_btn{
+ position:relative;
+ left:23px;top:48px;
+
+}
+/*弹层3与弹层4共同样式*/
+.pro_frames,.pro_logins{
+ height:184px;
+}
+.pro_frames_con,.pro_logins_con{
+ background:url(../../images/pops/pro_pic2.png) no-repeat 0px 0px;
+ width:316px;
+ height:184px;
+}
+.pro_frames_con .frames_conter,.pro_logins_con .logins_conter{
+ position:relative;
+ top:42px; left: -27px;
+ color:#f03800;
+}
+.pro_frames_con .frames_colse,.pro_logins_con .logins_colse{
+ position:relative;
+ left:216px;top:-53px;
+}
+.pro_frames_con .frames_btn,.pro_logins_con .logins_btn{
+ position:relative;
+ left:-17px;top:51px;
+}
+.pro_frames_con .frames_conter,.pro_logins_con .logins_conter,.pro_logins_con2 .logins2_conter{
+ width:240px;
+ display:inline-block;
+ color:#f03800;
+}
+.pro_frames_con .frames_colse,.pro_logins_con .logins_colse,.pro_logins_con2 .logins2_colse{
+ cursor:pointer;
+ width:30px; height:30px;
+ display: inline-block;
+}
+.pro_frames_con .frames_btn,.pro_logins_con .logins_btn,.pro_logins_con2 .logins2_btn{
+ cursor:pointer;
+ width:88px; height:30px;
+ display: inline-block;
+}

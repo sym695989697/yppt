@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ICCARD_APPLY">
+
+	<resultMap id="iCCardApplyDetailExtend" class="com.ctfo.yppt.bean.ICCardApplyDetailExtend">
+		<result column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="APPLY_ID" jdbcType="VARCHAR" property="applyId" />
+		<result column="CARD_ID" jdbcType="VARCHAR" property="cardId" />
+		<result column="CARD_NUM" jdbcType="VARCHAR" property="cardNum" />
+		<result column="CARD_TYPE" jdbcType="VARCHAR" property="cardType" />
+		<result column="MARK" jdbcType="VARCHAR" property="mark" />
+		<result column="VEHICLE_NO" jdbcType="VARCHAR" property="vehicleNo" />
+		<result column="VEHICLE_COLOR" jdbcType="VARCHAR" property="vehicleColor" />
+		<result column="PHONE_NUM" jdbcType="VARCHAR" property="phoneNum" />
+		<result column="ACCEPT_MESSAGE" jdbcType="VARCHAR" property="acceptMessage" />
+		<result column="VEHICLE_LICENSE" jdbcType="VARCHAR" property="vehicleLicense" />
+		<result column="STATUS" jdbcType="VARCHAR" property="state" />
+		<result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+		<result column="CREATE_TIME" jdbcType="DECIMAL" property="createTime" />
+		<result column="MODIFY_TIME" jdbcType="DECIMAL" property="auditTime" />
+		<result column="BALANCE" jdbcType="DECIMAL" property="balance" />
+		<result column="REASON" jdbcType="VARCHAR" property="reason" />
+		
+	</resultMap>
+
+<sql id="queryUserApllySql" >
+		SELECT AA.ID,
+		AA.APPLY_ID,
+        DECODE(BB.STATUS , '08' , CC.ID  , AA.CARD_ID ) CARD_ID ,
+        DECODE(BB.STATUS , '08' , CC.CARD_NUMBER , AA.CARD_NUM ) CARD_NUM ,
+        DECODE(BB.STATUS , '08' , CC.CARD_TYPE ,AA.CARD_TYPE )  CARD_TYPE ,
+		AA.MARK,
+	    DECODE(BB.STATUS , '08' ,CC.VEHICLE_NO ,AA.VEHICLE_NO ) VEHICLE_NO ,
+	    DECODE(BB.STATUS , '08' ,CC.VEHICLE_COLOR, AA.VEHICLE_COLOR ) VEHICLE_COLOR ,
+	    DECODE(BB.STATUS , '08' ,CC.TELEPHONE_NUMBER ,AA.PHONE_NUM) PHONE_NUM ,
+	    DECODE(BB.STATUS , '08' ,CC.MESSAGE_OR_NOT ,AA.ACCEPT_MESSAGE) ACCEPT_MESSAGE ,
+	    DECODE(BB.STATUS , '08' ,CC.VEHICLE_LICENSE ,AA.VEHICLE_LICENSE) VEHICLE_LICENSE ,
+		BB.STATUS ,
+		BB.CREATE_TIME ,
+		BB.MODIFY_TIME ,
+		BB.USER_ID ,
+		CC.BALANCE ,
+		BB.MARK REASON
+		FROM TB_IC_CARD_APPLY_DETAIL AA, TB_IC_CARD_APPLY BB, TB_IC_CARD CC
+		WHERE AA.APPLY_ID = BB.ID
+		AND AA.CARD_ID = CC.ID(+)
+		AND BB.USER_ID=#userId:VARCHAR#
+		<isNotNull property="cardStateIn" prepend="AND">
+		  <iterate property="cardStateIn" open=" BB.STATUS  IN ( " close=" ) "   conjunction=",">
+            #cardStateIn[]#
+          </iterate>
+		</isNotNull>
+		<isNotNull property="cardStateNotIn" prepend="AND">
+		  <iterate property="cardStateNotIn" open=" BB.STATUS NOT IN ( " close=" ) "   conjunction=",">
+            #cardStateNotIn[]#
+          </iterate>
+		</isNotNull>
+		<isNotNull   property="condition" >
+		AND (
+			 BB.USER_REG_PHONE LIKE '%'|| #condition:VARCHAR# ||'%' OR
+			 AA.VEHICLE_NO LIKE '%'|| #condition:VARCHAR# ||'%' OR
+			 AA.CARD_NUM LIKE '%'|| #condition:VARCHAR# ||'%'
+		)
+		</isNotNull>
+		ORDER BY BB.CREATE_TIME DESC
+</sql>
+
+	<select id="queryUserAplly" parameterClass="java.util.Map" resultMap="iCCardApplyDetailExtend" remapResults="true">
+		<include refid="Generic.oracle_Pagination_Head" />
+		<include refid="queryUserApllySql" />
+		<include refid="Generic.oracle_Pagination_Tail" />
+	</select>
+	
+	<select id="countQueryUserAplly" parameterClass="java.util.Map" resultClass="int" remapResults="true">
+		select count(*) from (
+		<include refid="queryUserApllySql" />
+		)
+	</select>
+	
+</sqlMap>

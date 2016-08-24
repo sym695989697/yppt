@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+body{
+ font-family:'Microsoft Yahei','Hiragino Sans GB',"\5b8b\4f53",sans-serif;
+}
+ul,p{
+ padding:0;
+ margin:0;
+}
+li{
+ list-style:none;
+}
+.mt8m{
+ margin-top:0.8em;
+}
+.block{
+ display:block;
+ font-weight:bold;
+}
+.oil_intro_con{
+ width:100%;
+ display:inline-block;
+ padding:0em 0em 0.5em 0em;
+}
+.oil_intro_con a{
+ font-size:1em;
+ color:#6697e8;
+ text-decoration:underline;
+}
+.oil_intro_con .spantop{
+ color:#3d4245;
+ font-size:1.2em;
+ font-weight:bold;
+ display:block;
+ padding:0.2em 0.5em 0.2em 0.7em;
+}
+.oil_intro_con ul{
+ padding:0.3em 1em 0.7em 1em;
+}
+.oil_intro_con  .indent{
+ text-indent:2em;
+}
+.oil_intro_con li{
+ margin-bottom:0.7em;
+ font-size:1.2em;
+ color:#666666;
+}
+.oil_intro_con dl{
+ padding-top:0.2em;
+ margin-bottom:0px;
+}
+.oil_intro_con p{
+ padding-top:0.2em;
+}
+.oil_intro_con dd{
+ margin-bottom:0.2em;
+ background:url(../../images/gold_page/card_icon.png) no-repeat 40px 9px;
+ padding-left:1em;
+}
+.oil_intro_con li.oil_intro_table{
+ width:100%;
+ margin:1.2em 0em 1.5em 0em;
+}
+.oil_intro_table td{
+ text-align:center;
+ color:#ff7200;
+ font-size:0.7em;
+}
+.intro_pic6 img,.intro_pic7 img,.intro_pic8 img,.intro_pic9 img{
+ width:100%;
+ max-width:80px;
+ display:inline-block;
+}
+.intro_pic6,.intro_pic7,.intro_pic8,.intro_pic9{
+ width:6.54142%;
+ max-width:80px;
+ padding:0em 0.4em 0.3em 0.4em;
+}
+.intro_pic14 img{
+  width:100%;
+ max-width:55px;
+ display:inline-block;
+}
+.intro_pic14{
+ width:2.42142%;
+ max-width:55px;
+}
+.bot{
+  padding: 0.2em 0.5em 0.2em 0.7em;
+}
+

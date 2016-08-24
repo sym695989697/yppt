@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ctfo.yppt</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	
+	<artifactId>yppt-gateway-service</artifactId>
+	<name>yppt网关服务</name>
+	<description>车旺油卡(yppt)管理系统-网关服务</description>
+	<packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<yppt.service.finalName>gatewayService</yppt.service.finalName>
+	</properties>
+	
+	<dependencies>
+		<!-- 自身API -->
+		<dependency>
+			<groupId>com.ctfo.yppt</groupId>
+			<artifactId>yppt-gateway-interface</artifactId>
+			<version>${version.yppt}-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- 支付中心API -->
+		<dependency>
+			<groupId>com.ctfo.tyzfpt</groupId>
+			<artifactId>upp-security</artifactId>
+			<version>${version.upp}</version>
+		</dependency>
+		
+		<!-- 客户资料接口坐标标 -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.ctfo.tyrzpt</groupId> -->
+<!-- 			<artifactId>crm-info-interface</artifactId> -->
+<!-- 			<version>1.1.0</version> -->
+<!-- 		</dependency> -->
+		
+		<!-- 积分账户接口坐标标 -->
+		<dependency>
+			<groupId>com.ctfo.chpt</groupId>
+			<artifactId>chpt-infoservice-interface</artifactId>
+			<version>${version.chpt}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.ctfo.chpt</groupId>
+			<artifactId>chpt-dealservice-interface</artifactId>
+			<version>${version.chpt}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- 短信平台API -->
+		<dependency>
+			<groupId>com.ctfo.sms</groupId>
+			<artifactId>sms-intf</artifactId>
+			<version>${version.sms}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.ctfo.yppt</groupId>
+			<artifactId>yppt-base-interface</artifactId>
+			<version>${version.yppt}-SNAPSHOT</version>
+		</dependency>
+
+		<!-- TODO 这个依赖以后不需要 Junit4 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+				
+		<!-- soa jar -->
+		<dependency>
+			<groupId>com.ctfo.common</groupId>
+			<artifactId>soa-interface</artifactId>
+			<version>${version.soa-interface}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctfo.common</groupId>
+			<artifactId>soa-hessian</artifactId>
+			<version>${version.soa-hessian}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctfo.common</groupId>
+			<artifactId>soa-grid</artifactId>
+			<version>${version.soa-grid}</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<finalName>${yppt.service.finalName}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>castor-maven-plugin</artifactId>
+					<version>2.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>product</id>
+			<properties>
+				<package.environment>product</package.environment>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<includes>
+							<include>**/*</include>
+						</includes>
+						<excludes>
+							<exclude>${package.environment}/*</exclude>
+						</excludes>
+						<filtering>true</filtering>
+					</resource>
+					<resource>
+						<directory>src/env/${package.environment}</directory>
+						<includes>
+							<include>**/*</include>
+						</includes>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+				<finalName>${yppt.service.finalName}</finalName>
+			</build>
+		</profile>
+		<profile>
+			<id>testing</id>
+			<properties>
+				<package.environment>test</package.environment>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<includes>
+							<include>**/*</include>
+						</includes>
+						<excludes>
+							<exclude>${package.environment}/*</exclude>
+						</excludes>
+						<filtering>true</filtering>
+					</resource>
+					<resource>
+						<directory>src/env/${package.environment}</directory>
+						<includes>
+							<include>**/*</include>
+						</includes>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+				<finalName>${yppt.service.finalName}</finalName>
+			</build>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<package.environment>dev</package.environment>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<includes>
+							<include>**/*</include>
+						</includes>
+						<excludes>
+							<exclude>${package.environment}/*</exclude>
+						</excludes>
+						<filtering>true</filtering>
+					</resource>
+					<resource>
+						<directory>src/env/${package.environment}</directory>
+						<includes>
+							<include>**/*</include>
+						</includes>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+				<finalName>${yppt.service.finalName}</finalName>
+			</build>
+		</profile>
+	</profiles>
+</project>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="csmSoaProperties" class="com.ctfo.csm.soa.SOAProperties">
+		<property name="serviceLocations">
+			<map>
+				<entry key="choosing-policies">
+					<list>
+					    <value>com.ctfo.chpt.deal:deal-service-locations</value>
+						<value>com.ctfo.csm.boss:chpt-service-locations</value>
+						<value>com.ctfo.chpt.boss:chpt-service-locations</value>
+						<value>com.ctfo.yppt.baseservice:yppt-base-service-locations</value>
+					</list>
+				</entry>
+				<entry key="chpt-service-locations">
+					<list>
+						<value>${chpt-service-location-0}</value>
+					</list>
+				</entry>
+				<entry key="deal-service-locations">
+					<list>
+						<value>${deal-service-location-0}</value>
+					</list>
+				</entry>
+				<entry key="yppt-base-service-locations">
+					<list>
+						<value>${yppt-base-service-location-0}</value>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

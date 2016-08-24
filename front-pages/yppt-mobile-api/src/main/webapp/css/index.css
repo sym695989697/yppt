@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+body {
+	padding: 5px;
+	margin: 0;
+	padding-bottom: 15px;
+}
+
+#layout1 {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.l-page-top {
+	height: 80px;
+	background: #f8f8f8;
+	margin-bottom: 3px;
+}
+
+h4 {
+	margin: 20px;
+}
+
+.box {
+	float: left;
+}
+
+.tree {
+	width: 230px;
+	height: 200px;
+	margin: 10px;
+	border: 1px solid #ccc;
+	overflow: auto;
+}
+
+h2 {
+	margin: 10px;
+	font-weight: bold;
+	font-size: 14px;
+	clear: both;
+	color: #E55100;
+}

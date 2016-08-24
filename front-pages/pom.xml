@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	  <groupId>com.ctfo.yppt</groupId>
+	  <version>1.0.0</version>
+	  <artifactId>parent</artifactId>
+	</parent>
+	
+	<groupId>com.ctfo.yppt</groupId>
+	<artifactId>front-pages</artifactId>
+	<packaging>pom</packaging>
+	
+	<name>Front page system </name>
+  
+	<modules>
+		<module>yppt-portal-app</module>
+		<module>yppt-manager-app</module>
+		<module>yppt-mobile-api</module>
+	</modules>
+  
+</project>

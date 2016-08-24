@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="SpringBUtils" class="com.ctfo.csm.utils.SpringBUtils" scope="singleton" />
+	<bean id="csmSoaProperties" class="com.ctfo.csm.soa.SOAProperties">
+		<property name="serviceLocations">
+			<map>
+				<entry key="choosing-policies">
+					<list>
+						<!-- 短信服务 -->
+						<value>com.ctfo.notification:sms-service-locations</value>
+						<value>com.ctfo.yppt.baseservice:base-service-locations</value>
+						<value>com.ctfo.base.service.intf:base-service-locations</value>
+						<value>com.ctfo.gatewayservice:gateway-service-locations</value>
+						<value>com.ctfo.chpt.deal:deal-service-locations</value>
+						<value>com.ctfo.csm.boss:boss-service-locations</value>
+						<value>com.ctfo.chpt.boss:boss-service-locations</value>
+						<value>com.ctfo:boss-service-locations</value>
+					</list>
+				</entry>
+				<!-- 短信服务 -->
+				<entry key="sms-service-locations">
+					<list>
+						<value>${sms-service-locations-0}</value>
+					</list>
+				</entry>
+				<entry key="boss-service-locations">
+					<list>
+						<value>${boss-service-location-0}</value>
+					</list>
+				</entry>
+				<entry key="deal-service-locations">
+					<list>
+						<value>${deal-service-location-0}</value>
+					</list>
+				</entry>
+				<entry key="base-service-locations">
+					<list>
+						<value>${base-service-location-0}</value>
+						<value>${base-service-location-1}</value>
+						<value>${base-service-location-2}</value>
+						<value>${base-service-location-3}</value>
+					</list>
+				</entry>
+				<entry key="gateway-service-locations">
+					<list>
+						<value>${gateway-service-location-0}</value>
+						<value>${gateway-service-location-1}</value>
+						<value>${gateway-service-location-2}</value>
+						<value>${gateway-service-location-3}</value>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

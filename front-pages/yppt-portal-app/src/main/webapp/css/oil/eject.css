@@ -1,0 +1,32 @@
+@charset "utf-8";
+.black_overlay1{ 
+            display: none; 
+            position:fixed;
+            top: 0%; 
+            left: 0%; 
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.6; 
+            opacity:.60; 
+            filter: alpha(opacity=66); 
+        } 
+        .white_content1 { 
+            display: none; 
+            position:fixed; 
+            top: 10%; 
+            left: 25%; 
+            width: 55%;   
+            z-index:1002; 
+            overflow: hidden; 
+        } 
+        .white_content1 a{  
+            position: relative;
+            float: right;
+            top:20px;
+            margin-right: 8px;
+        }
+		 .white_content1 .white_img{
+		  margin-right:5px;
+		}

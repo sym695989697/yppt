@@ -1,0 +1,12 @@
+/**
+* this all css
+*
+* author  malq
+* data    2014-02-15
+*/
+
+
+@import url("ligerUI/skins/all.css");
+@import url("jqueryAutoComplete/jquery.autocomplete.css");
+@import url("csm/all.css");
+@import url("passwordStrong.css");

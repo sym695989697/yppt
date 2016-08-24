@@ -1,0 +1,157 @@
+@charset "utf-8";
+.oil_explain li{
+ background-color:#fbfbfb;
+ border:1px solid #f2f2f2;
+}
+.oil_explain .my_oil{
+ width:344px;
+}
+.oil_explain .my_oil_top{
+ border-bottom:1px solid #eee;
+}
+.oil_explain .my_oil .my_oil_top dt{
+ padding:21px 21px 16px 18px;
+}
+.oil_explain .my_oil .my_oil_top dd span.num{
+ font-size:40px;
+ color:#ff9900;
+}
+.oil_explain .my_oil .my_oil_top dd span.num2{
+ position:relative;
+ top:6px; left:10px;
+}
+.oil_explain .my_oil .my_oil_top dd span.num3{
+ position:relative;
+ top:5px;left:10px;
+}
+.oil_explain .my_oil .my_oil_top .oil_topdd{
+ padding-top:18px;
+}
+.oil_explain  .my_oil_bot{
+ border-top:1px solid #fff;
+}
+.oil_explain  .my_oil_bot a{
+ color:#006699;
+ display:block;
+ float:left;
+}
+.oil_explain  .my_oil_bot .oil_bota,.oil_explain  .my_oil_bot .oil_botb{
+ border-right:1px solid #eee;
+}
+.oil_explain  .my_oil_bot .oil_botb,.oil_explain  .my_oil_bot .oil_botc{
+ border-left:1px solid #fff;
+}
+.oil_explain  .my_oil_bot .oil_bota,.oil_explain  .my_oil_bot .oil_botc{
+ padding:11px 32px 11px 32px;
+}
+.oil_explain  .my_oil_bot .oil_botb{
+ padding:11px 33px 11px 33px;
+}
+.oil_explain  .oil_one,.oil_explain  .oil_tow{
+ width:295px;
+}
+.oil_explain .oil_one .my_oil_top dt{
+ padding:19px 21px 17px 18px;
+}
+.oil_explain  .my_oil_bot .oil_botd{
+ float:right;
+ padding:11px 20px 11px 0px; 
+}
+/*油品优惠入口*/
+.oil_sale{
+ width:960px;
+ height:80px;
+ text-align:center;
+ background-color:#e0e6e9;
+ padding:0px 0px 0px 0px;
+ margin-top:30px;
+}
+.oil_sale a{
+ color:#fff;
+ font-size:30px;
+}
+.oil_sale a:hover{
+ text-decoration:none;
+}
+/*交易记录*/
+.oil_record_title{
+ line-height:35px;
+ 
+}
+.record_title_tab a{
+ display:inline-block;
+ padding:0px 20px 0px 20px;
+ color:#666;
+ border:1px solid #e8e8e8;
+ border-bottom:0px;
+}
+.record_title_tab a:hover,.record_title_tab .title_tabcurr{
+ background-color:#ff7200;
+ color:#fff;
+ text-decoration:none;
+ border:1px solid #ff7200;
+ border-bottom:0px;
+}
+.oil_record_table{
+ border-top:2px solid #ff7200;
+ border-left:1px solid #e9e9e9;
+ border-right:1px solid #e9e9e9;
+ border-bottom:1px solid #e9e9e9;
+}
+.oil_record_table th{
+ color:#676767;
+ line-height:32px;
+ border-bottom:1px solid #e9e9e9;
+ background-color:#f9f9f9;
+}
+.oil_record_table .first_th,.oil_record_table .first_td{
+ padding-left:18px;
+}
+.oil_record_table .first_td{
+ line-height:50px;
+}
+.oil_record_table td{
+ border-bottom:1px solid #eff2f5;
+ color:#333;
+}
+.oil_record_table td.table_num{
+ color:#ff7200;
+ font-weight:bold;
+ font-size:16px;
+}
+.oil_record_table  .table_bg td{
+ background-color:#f9f9f9;
+}
+/*无查找数据*/
+.no-data{
+  height:113px;
+  line-height:113px;
+  text-align:center;
+  margin:10px 0;
+  font-size:18px;
+  font-family:"微软雅黑", sans-serif;
+  }
+/*温馨提示*/  
+.findcar-content .cont-prompt, .no-data{
+  background-color:#fdf1de;
+  border:1px solid #fbe2bc;
+  color:#eb5b3e;
+  }
+.findcar-content .cont-prompt{
+  width:937px;
+  margin-top:15px;
+  height:38px;
+  line-height:38px;
+  padding-left:21px;
+  }
+.cont-prompt span{
+  float:left;
+  }
+.findcar-content .fc-btn3{
+  background:url(../../images/icon/close.png) no-repeat;
+  width:14px;
+  height:14px;
+  float:right;
+  border:none;
+  margin:12px 19px 0 0;
+  }

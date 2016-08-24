@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ctfo.yppt</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>yppt-rebate-interface</artifactId>
+	<name>oil card service rebate interface</name>
+	<packaging>jar</packaging>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.ctfo.yppt.common</groupId>
+			<artifactId>base-interface</artifactId>
+			<version>${version.yppt}</version>
+		</dependency>
+	</dependencies>
+	
+	
+	<build>
+		<plugins>	
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>generated_src</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>						
+		</plugins>
+	</build>
+</project>

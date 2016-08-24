@@ -1,0 +1,152 @@
+package com.ctfo.gatewayservice.interfaces.bean.pay;
+
+import java.io.Serializable;
+
+/**
+ * 获取取银台扣款Url参数对象
+ * 
+ * @author sunchuanfu
+ */
+public class GetCashierDeductUrlParams implements Serializable {
+	private static final long serialVersionUID = -989939087156786616L;
+	
+	/**
+	 * 下面属性除了标注"网关服务赋值"，其它都需要传过来
+	 */
+	private String accountNo;// 账户
+	private String merchantOrderNo;// 业务订单号
+	private String merchantOrderRemark;// 备注(例如"油卡充值")
+	private String merchantOrderAmount;// 金额
+	private String callbackURL;// 支付平台扣款后的后台回调地址(网关服务赋值)
+	private String fcallbackURL;// 支付平台扣款后的前台回调地址(返回页面成功或者失败，这里的结果是假数据)
+	private String userId;// 用户id
+	private String productCatalog;// 商品类型(例如"1"，对应数据1对应易宝的商品类型"虚拟商品")
+	private String productName;// 商品名称(例如"油卡充值")
+	private String identityType;// 标识类型(例如"2")
+	private String identityId;// 标识ID(如果标识类型为2，则这里即为用户id)
+	private String clentType;// 终端类型(油品使用值2)(0:IMEI，1:MAC，2:UUID，3:其他)
+	private String clentId;// 终端标示ID(如果终端类型为2，则这里即为用户id)
+	private String userUa;// 商品UA(在页面显示的图片)(网关服务赋值)
+	private String userLoginName;// 登录用户名;
+
+	public String getAccountNo() {
+		return accountNo;
+	}
+
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	public String getMerchantOrderNo() {
+		return merchantOrderNo;
+	}
+
+	public void setMerchantOrderNo(String merchantOrderNo) {
+		this.merchantOrderNo = merchantOrderNo;
+	}
+
+	public String getMerchantOrderRemark() {
+		return merchantOrderRemark;
+	}
+
+	public void setMerchantOrderRemark(String merchantOrderRemark) {
+		this.merchantOrderRemark = merchantOrderRemark;
+	}
+
+	public String getMerchantOrderAmount() {
+		return merchantOrderAmount;
+	}
+
+	public void setMerchantOrderAmount(String merchantOrderAmount) {
+		this.merchantOrderAmount = merchantOrderAmount;
+	}
+
+	public String getCallbackURL() {
+		return callbackURL;
+	}
+
+	public void setCallbackURL(String callbackURL) {
+		this.callbackURL = callbackURL;
+	}
+
+	public String getFcallbackURL() {
+		return fcallbackURL;
+	}
+
+	public void setFcallbackURL(String fcallbackURL) {
+		this.fcallbackURL = fcallbackURL;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getProductCatalog() {
+		return productCatalog;
+	}
+
+	public void setProductCatalog(String productCatalog) {
+		this.productCatalog = productCatalog;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getIdentityType() {
+		return identityType;
+	}
+
+	public void setIdentityType(String identityType) {
+		this.identityType = identityType;
+	}
+
+	public String getIdentityId() {
+		return identityId;
+	}
+
+	public void setIdentityId(String identityId) {
+		this.identityId = identityId;
+	}
+
+	public String getClentType() {
+		return clentType;
+	}
+
+	public void setClentType(String clentType) {
+		this.clentType = clentType;
+	}
+
+	public String getClentId() {
+		return clentId;
+	}
+
+	public void setClentId(String clentId) {
+		this.clentId = clentId;
+	}
+
+	public String getUserUa() {
+		return userUa;
+	}
+
+	public void setUserUa(String userUa) {
+		this.userUa = userUa;
+	}
+
+	public String getUserLoginName() {
+		return userLoginName;
+	}
+
+	public void setUserLoginName(String userLoginName) {
+		this.userLoginName = userLoginName;
+	}
+
+}

@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+body{
+ font-family:'Microsoft Yahei','Hiragino Sans GB',"\5b8b\4f53",sans-serif;
+}
+*{
+ padding:0;
+ margin:0
+}
+ul{
+ padding:0;
+ margin:0;
+}
+li{
+ list-style:none;
+}
+.register_frame{
+ width:100%;
+ display:inline-block;
+ margin-bottom:0.5em;
+ padding-top:0.8em;
+}
+.register_frame .frame_title_ol li ul li,.register_frame .title_ol{
+ line-height:1.8em;
+}
+.frame_main .frame_main_span{
+ display:block;
+ font-size:1.2em;
+ margin-bottom:0.5em;
+ color:#3d4245;
+ font-weight:bold;
+}
+.frame_main{
+ padding:0em 1em 0em 1em;
+}
+.frame_title_main .frame_title_ol{
+ padding-bottom:0.5em;
+ font-size:1.2em;
+}
+.mt5{
+ margin-top:0.5em;
+}
+@media screen and (max-width:320px){
+ .frame_main .frame_main_span,.frame_title_main .st_title{
+  font-size:0.9em;
+ }
+}

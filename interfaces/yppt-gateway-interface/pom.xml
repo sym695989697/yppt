@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ctfo.yppt</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>yppt-gateway-interface</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>oil card service gateway interface</name>
+	<packaging>jar</packaging>
+
+	<dependencies>
+
+		<!-- yppt基础服务接口依赖 -->
+		<dependency>
+			<groupId>com.ctfo.yppt.common</groupId>
+			<artifactId>base-interface</artifactId>
+			<version>${version.yppt}</version>
+		</dependency>
+
+		<!-- 统一认证 -->
+		<dependency>
+			<groupId>com.ctfo.tyrzpt</groupId>
+			<artifactId>tyrzpt-interface</artifactId>
+			<version>${version.tyrzpt}</version>
+		</dependency>
+
+		<!-- 车辆中心API -->
+		<dependency>
+			<groupId>com.ctfo.vims</groupId>
+			<artifactId>vims-external-interface</artifactId>
+			<version>${version.vims}</version>
+		</dependency>
+
+		<!-- 客户资料接口坐标标 -->
+		<dependency>
+			<groupId>com.ctfo.tyrzpt</groupId>
+			<artifactId>crm-info-interface</artifactId>
+			<version>${version.crm}</version>
+		</dependency>
+
+	</dependencies>
+</project>

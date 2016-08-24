@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="TB_IC_CARD_TRADE_INFO_HISTORY_EXTEND">
+
+	<resultMap class="com.ctfo.yppt.bean.ICCardTradeInfoBean"
+		id="abatorgenerated_ICCardTradeInfoHistoryResult">
+		<result column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="CARD_NO" jdbcType="VARCHAR" property="cardNo" />
+		<result column="TRADE_MONEY" jdbcType="DECIMAL" property="tradeMoney" />
+		<result column="CARD_BALANCE" jdbcType="DECIMAL" property="cardBalance" />
+		<result column="TRADE_TIME" jdbcType="DECIMAL" property="tradeTime" />
+		<result column="TRADE_STATE" jdbcType="VARCHAR" property="tradeState" />
+		<result column="TRADE_ADRESS" jdbcType="VARCHAR" property="tradeAdress" />
+		<result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName" />
+		<result column="PRODUCT_PRICE" jdbcType="DECIMAL" property="productPrice" />
+		<result column="PRODUCT_NUM" jdbcType="DECIMAL" property="productNum" />
+		<result column="VEHICLE_NO" jdbcType="VARCHAR" property="vehicleNo" />
+		<result column="TRADE_TYPE" jdbcType="VARCHAR" property="tradeType" />
+		
+	</resultMap>
+	
+	
+	
+	 <sql id="abatorgenerated_sum_Where_Clause">
+     
+     WHERE
+		h .CARD_ID = c. ID
+	AND h .TRADE_TYPE = 'IC-GAS'
+	
+	<isNotEmpty prepend=" AND " property="userId">
+			 h .USER_ID = #userId#
+	</isNotEmpty>
+	
+	<isNotEmpty prepend=" AND " property="startTime">
+			<![CDATA[  h .TRADE_TIME >= #startTime# ]]>
+	</isNotEmpty>
+
+	<isNotEmpty prepend=" AND " property="endTime">
+			<![CDATA[  h .TRADE_TIME <= #endTime# ]]>
+    </isNotEmpty>
+     <isNotEmpty prepend=" AND " property="cardId">
+    	c.ID =#cardId#
+	</isNotEmpty>
+    <isNotEmpty prepend=" AND " property="cardNo">
+    	h.CARD_NO =#cardNo#
+	</isNotEmpty>
+	<isNotEmpty prepend=" AND " property="status">
+			h .TRADE_STATE =#status#
+	</isNotEmpty>
+
+     </sql>
+
+     <sql id="abatorgenerated_paginate_Where_Clause">
+     
+     WHERE
+		h .CARD_ID = c. ID
+	AND h .TRADE_TYPE = 'IC-GAS'
+	
+	<isNotEmpty prepend=" AND " property="userId">
+			 h .USER_ID = #userId#
+	</isNotEmpty>
+	
+	<isNotEmpty prepend=" AND " property="cardId">
+			 c.ID = #cardId#
+	</isNotEmpty>
+	
+	<isNotEmpty prepend=" AND " property="startTime">
+			<![CDATA[  h .TRADE_TIME >= #startTime# ]]>
+	</isNotEmpty>
+
+	<isNotEmpty prepend=" AND " property="endTime">
+			<![CDATA[  h .TRADE_TIME <= #endTime# ]]>
+    </isNotEmpty>
+    
+    <isNotEmpty prepend=" AND " property="threeSwitch">
+    	h.CARD_ID in   (
+				       select 
+				          ID 
+				       from 
+				          TB_IC_CARD 
+				       where
+		                   CARD_NUMBER LIKE '%' || #threeSwitch# || '%' 
+		               OR  VEHICLE_NO LIKE '%' || #threeSwitch# || '%' 
+		               OR  TELEPHONE_NUMBER LIKE '%' || #threeSwitch# || '%' 
+	               )
+	      
+		</isNotEmpty>
+	
+	    <isNotEmpty prepend=" AND " property="status">
+			h .TRADE_STATE =#status#
+		</isNotEmpty>
+
+     </sql>
+	<select id="abatorgenerated_selectByPaginateTradeInfoHistory"
+		parameterClass="java.util.Map" resultMap="abatorgenerated_ICCardTradeInfoHistoryResult">
+		
+		SELECT
+			*
+		FROM
+			(
+				SELECT
+					A .*, ROWNUM RN
+				FROM
+					(
+					
+					SELECT
+							h.ID,
+							h.CARD_NO,
+							h.TRADE_MONEY/100 as TRADE_MONEY,
+							h.CARD_BALANCE/100 as CARD_BALANCE,
+							h.TRADE_TIME,
+							h.TRADE_STATE,
+							h.TRADE_ADRESS,
+							h.PRODUCT_NAME,
+							h.PRODUCT_PRICE,
+							h.VEHICLE_NO,
+							h.PRODUCT_NUM,
+							'IC-GAS' as TRADE_TYPE
+					FROM
+						TB_IC_CARD_TRADE_INFO_HISTORY h,
+						TB_IC_CARD c
+					<include refid="TB_IC_CARD_TRADE_INFO_HISTORY_EXTEND.abatorgenerated_paginate_Where_Clause" />
+							
+				    ORDER BY h.TRADE_TIME DESC 
+					) A
+				WHERE	
+					<![CDATA[ROWNUM < =#endRow# ]]>
+			)
+		WHERE
+	    <![CDATA[ RN > #startRow# ]]>
+   </select>
+	
+	<select id="abatorgenerated_countByPaginateTradeInfoHistory"
+	parameterClass="java.util.Map" resultClass="java.lang.Integer" >
+
+		SELECT
+			count(*) 
+		FROM
+			TB_IC_CARD_TRADE_INFO_HISTORY h,
+			TB_IC_CARD c
+		<include refid="TB_IC_CARD_TRADE_INFO_HISTORY_EXTEND.abatorgenerated_paginate_Where_Clause" />
+								
+	</select>
+	
+	<select id="abatorgenerated_countTrade"
+	 parameterClass="java.util.Map" resultClass="java.math.BigDecimal" >
+
+		SELECT
+			sum(h.TRADE_MONEY) 
+		FROM
+			TB_IC_CARD_TRADE_INFO_HISTORY h,
+			TB_IC_CARD c
+		    <include refid="TB_IC_CARD_TRADE_INFO_HISTORY_EXTEND.abatorgenerated_paginate_Where_Clause" />
+						
+	</select>
+	
+	<select id="abatorgenerated_sumOilTrade"
+	 parameterClass="java.util.Map" resultClass="java.math.BigDecimal" >
+
+		SELECT
+			sum(h.PRODUCT_NUM) 
+		FROM
+			TB_IC_CARD_TRADE_INFO_HISTORY h,
+			TB_IC_CARD c
+		    <include refid="TB_IC_CARD_TRADE_INFO_HISTORY_EXTEND.abatorgenerated_sum_Where_Clause" />
+						
+	</select>
+	
+	
+
+</sqlMap>

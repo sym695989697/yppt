@@ -1,0 +1,274 @@
+@charset "utf-8";
+/* CSS Document */
+body,html,ul,li,img,form,input{
+	padding:0;
+	margin:0;
+}
+li{
+	list-style: none;
+}
+html{
+	background-color: #fff;
+}
+.cb{
+	clear: both;
+}
+.card-prompt{
+	width: 770px;
+	height: 28px;
+	padding-left: 28px;
+	line-height: 28px;
+	background:#fdf1de url("../../images/handle/prompt.png") no-repeat 10px 4px;
+	border:1px solid #fbe2bc;
+	color: #eb5b3e;
+	font-size:12px;
+}
+.card-prompt span{
+	float: left;
+}
+.card-prompt .fc-btn3{
+	background:url("../../images/handle/close.png") no-repeat;
+	float: right;
+	border:none;
+	margin:8px 10px 0 0;
+	width:14px;
+	height: 14px;
+}
+.card-box1{
+	width:799px;
+	min-height: 300px;
+	border: 1px solid #e7e7e7;
+	margin-top:10px;
+	padding-top:20px;
+}
+.card-box1 form, .card-box2 form{
+	font-size: 14px;
+	color: #555;
+	padding-left:114px;
+	}
+.card-box1 form .tex-wid90, .card-box2 form .tex-wid90{
+	display:block;
+	width:90px;
+	text-align:right;
+	color:#555;
+	font-size:14px;
+	float:left;
+	line-height:30px;
+	}
+.card-box1 form .myinput, .card-box2 form .myinput{
+	float:left;
+	border:1px solid #d5d9de;
+	height:28px;
+	width:198px;
+	background:#fff;
+	position:relative;
+	margin-right:10px;
+	margin-bottom:15px;
+}
+.card-box1 form .wid198, .card-box2 form .wid198{
+	float:left;
+	width:198px;
+	height:28px;
+	border:1px solid #e1e4e7;
+	margin-bottom:15px;
+	background:#fff;
+	}
+.w160, .w280{
+	display: block;
+	float: left;
+	width:160px;
+	color: #b4b4b4;
+	font-size: 12px;
+	line-height: 30px;
+}
+.w280{
+	width:320px;
+}
+.SelectControl{
+	float:left;
+	border:1px solid #d5d9de;
+	height:28px;
+	width:198px;
+	background:#fff;
+	position:relative;
+	cursor:pointer;
+	margin-right:10px;
+	margin-bottom:15px;
+	}
+.SelectControl input{
+	position:relative;
+	margin:0;
+	float:left;
+	width:198px;
+	height:28px;
+	line-height:28px;
+	background:none;
+	border:none;
+	background:url(../../images/handle/arrowupdown.png) no-repeat 176px 11px;
+	padding-left:8px;
+	font-size:14px;
+	cursor:pointer;
+	}
+.SelectControl ul{
+	position:relative;
+	z-index:10000;
+	left:-1px;
+	margin-top:28px;
+	border:solid 1px #d5d9de;
+	background:#fff;
+	}
+.SelectControl li{
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	padding:0 6px;
+	cursor:pointer;
+	}
+.SelectControl li.on{
+	background:#ccc;
+	color:#fff;
+	}
+.card-box1 form .rep-info{
+	float: left;
+}	
+.card-box1 form .rep-info li{
+	line-height: 20px;
+}
+.mt-5{
+	margin-top: -5px;
+}
+.card-box1 form .button1, .sub-info .button1{	
+	color:#fff;
+	font-size:14px;
+	font-weight: bold;
+	border:none;
+	width:101px;
+	height:30px;
+	border-radius: 3px;
+	background:#ff7200;
+	margin:15px 0 0 90px;
+	}
+.sub-info .button1{	
+	margin:15px 0 0 204px;
+	}	
+.region{
+	float: left;
+}
+.region li{
+	float: left;
+	/* width:58px; */
+	height: 20px;
+	line-height: 20px;
+	border:1px solid #ff7200;
+	color: #555;
+	font-size: 12px;
+	padding-left: 5px;
+	margin-right: 10px;
+}
+.region li img{
+	float: right;
+	margin:5px 5px 0 0;
+}
+.card-box2{
+	width:798px;
+	min-height: 280px;
+	border:1px solid #e9e9e9;
+	margin-top:20px;
+}
+.card-box2 form img{
+	margin-bottom: 10px;
+}
+.card-box2 form .button2{	
+	font-size:14px;
+	font-weight: bold;
+	border:none;
+	width:60px;
+	height:24px;
+	background:url("../../images/handle/up-but.png");
+	float: left;
+	margin-right: 10px;
+	margin-top:3px;
+	}	
+.card-box2-tit{
+	height: 53px;
+	line-height: 53px;
+	font-size: 14px;
+	color: #333;
+	font-weight: bold;
+	background:#f5f5f5;
+	border-bottom:1px solid #e9e9e9;
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
+.card-box2-tit span{
+	float: left;
+	display: block;
+	width:200px;
+}
+.close-pro{
+	position: relative;
+	z-index: 99999;
+}
+.close-pro img{
+	float: right;
+	margin:20px 10px 0 0;
+}
+.close-pro div{
+    display: none;
+	line-height: 22px !important;
+	padding-top:12px;
+	position: relative;
+	left:658px;
+	top:-15px;
+	width:122px;
+	height: 63px;
+	background: url("../../images/handle/close-pro.png") no-repeat;
+	font-size: 12px;
+	color:#ff7200;
+	font-weight: bold;
+	text-align: center;
+}
+.close-pro div a{
+	color: #0d8dcd;
+	font-weight: normal;
+	text-decoration: none;
+}
+.card-box3{
+	margin-top: 0;
+	border-top:none;
+}
+.sub-info{
+	width:799px;;
+}
+.sub-info a{
+	color:#ff7200;
+	font-size: 14px;
+	font-weight: bold;
+	margin:15px 10px 0 0;
+	padding-left: 14px;
+	background: url("../../images/handle/add-icon.png") no-repeat  0 2px;
+	float: right;
+	text-decoration: none;
+}
+.sub-info #numcardDiv{
+	font-size: 12px;
+	font-weight: bold;
+	margin:17px 10px 0 0;
+	padding-left: 14px;
+	background: url("../../images/handle/add-icon.png") no-repeat  0 2px;
+	float: right;
+	text-decoration: none;
+}
+.agree-sub{
+	color: #333;
+	font-size: 12px;
+	margin:15px 0 0 204px;
+}
+.agree-sub span{
+	color: #005aa0;
+}
+.checkbox{
+	margin:0 3px;
+	vertical-align: middle;
+	vertical-align:-3px;
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN" "http://ibatis.apache.org/dtd/abator-config_1_0.dtd" >
+<abatorConfiguration >
+
+  <abatorContext generatorSet="com.ctfo.ibatis.abator.extend.Java2OracleGeneratorSet">
+  
+  
+  	<!-- 
+  				生成bean的对象的父类
+  				<property name="rootClass" value="com.ctfo.csm.intf.support.BaseSerializable" />
+  				
+  				生成DAO接口的扩展接口
+  				 <property name="rootInterface" value="com.ctfo.csm.daox.IDaoExtended" />
+  				生成DAO实现 的父类
+   				 <property name="rootDaoClass" value="com.ctfo.csm.daox.DaoExtendedIbatis" />
+   				
+   				生车类时忽略schema
+      			<property name="ignoreQualifiersAtRuntime" value="true" />
+
+    			当用继承表时，rootClass rootInterface rootDaoClass  自动成为父表的生成类
+    			<property name="rootTable" value="ACCESSIBLEOBJECT" />
+    			父表用于联表和表分区的字段
+    			<property name="partitionField" value="ORGCLASS" />
+  
+   -->
+   
+
+    <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.100.77:1521:chtest"
+      		 userId="yppt_develop" password="MwXM2xjxIhfHkW1A" >
+      <classPathEntry location="D:\maven\repository/com/oracle/ojdbc6/11.2.0.3.0/ojdbc6-11.2.0.3.0.jar" />
+    
+    <!--
+    <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.110.161:1521:uaa" userId="CCMS" password="CCMS" >
+      <classPathEntry location="D:/Program Files/repository/com/oracle/ojdbc6/11.2.0.3.0/ojdbc6-11.2.0.3.0.jar" />
+       -->
+    </jdbcConnection>
+    
+    <javaModelGenerator  targetPackage="com.ctfo.yppt.baseservice.trade.beans" targetProject="yppt-base-interface/generated_src" >
+    	<property name="rootClass" value="com.ctfo.common.models.BaseSerializable" />
+    	<property name="enableSubPackages" value="false" />
+    </javaModelGenerator>
+    
+    <sqlMapGenerator targetPackage="com.ctfo.yppt.baseservice.dao.trade.sqlmap" targetProject="yppt-base-service/src/main/resources" />
+    
+    <daoGenerator targetPackage="com.ctfo.yppt.baseservice.dao.trade" targetProject="yppt-base-service/dao_src" type="SPRING-ORACLE">
+    </daoGenerator>
+    
+    <!-- trade info Manager -->
+     <table tableName="TB_IC_CARD_TRADE_INFO" modelType="flat" domainObjectName="ICCardTradeInfo" >	
+   		<property name="ignoreQualifiersAtRuntime" value="true" />
+    </table>
+    
+    <table tableName="TB_IC_CARD_TRADE_INFO_HISTORY" modelType="flat" domainObjectName="ICCardTradeInfoHistory" >	
+   		<property name="ignoreQualifiersAtRuntime" value="true" />
+    </table>
+    
+     <table tableName="TB_IC_MAIN_CARD_TRADE_INFO" modelType="flat" domainObjectName="ICCardMainTradeInfo" >	
+   		<property name="ignoreQualifiersAtRuntime" value="true" />
+    </table>
+  </abatorContext>
+</abatorConfiguration>

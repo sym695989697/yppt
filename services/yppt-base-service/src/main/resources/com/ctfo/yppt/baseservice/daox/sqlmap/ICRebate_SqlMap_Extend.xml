@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ICRebate_Extend">
+	<select id="countUserRebate" parameterClass="java.util.Map" resultClass="java.lang.Long">
+		select sum(CREDIT_NUM) 
+			from TB_IC_CARD_CREDIT_ACCOUNT_IO
+		where user_id = #userId#
+		<isNotNull property="operateTimeStart" prepend="AND">
+			<![CDATA[  trade_time >= #operateTimeStart#  ]]> 
+		</isNotNull>
+		<isNotNull property="operateTimeEnd" prepend="AND">
+			<![CDATA[  trade_time <= #operateTimeEnd#  ]]> 
+		</isNotNull>
+	</select>
+</sqlMap>

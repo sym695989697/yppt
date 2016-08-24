@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="ICallServiceMap" class="com.ctfo.sinoiov.mobile.webapi.base.intf.impl.CallServiceImpl">
+
+		<property name="services">
+			<map>
+			    <!-- appIC卡简介 -->
+				<entry key="Y300000">
+					<ref bean="oilIntroductionManagerImpl" />
+				</entry>
+			    
+				<!-- app首页数据 -->
+				<entry key="Y300001">
+					<ref bean="mainDataManagerImpl" />
+				</entry>
+
+				<!-- 查询历史返利 -->
+				<entry key="Y300002">
+					<ref bean="queryHistoryRebateManagerImpl" />
+				</entry>
+
+				<!-- 查询油卡列表 -->
+				<entry key="Y300003">
+					<ref bean="queryOilCardListManagerImpl" />
+				</entry>
+
+				<!-- 查询油卡详情 -->
+				<entry key="Y300004">
+					<ref bean="queryOilCardInfoManagerImpl" />
+				</entry>
+
+				<!-- 查询单张油卡交易列表 -->
+				<entry key="Y300005">
+					<ref bean="queryOneOilCardTradeListManagerImpl" />
+				</entry>
+
+				<!-- 开卡申请 -->
+				<entry key="Y300006">
+					<ref bean="applyCreateOilCardManagerImpl" />
+				</entry>
+
+				<!-- 查询油卡类型 -->
+				<entry key="Y300007">
+					<ref bean="queryOilCardTypeManagerImpl" />
+				</entry>
+
+				<!-- 查询发卡地区 -->
+				<entry key="Y300008">
+					<ref bean="queryCreateCardDeptManagerImpl" />
+				</entry>
+
+				<!-- 修改IC卡手机号、车牌号 -->
+				<entry key="Y300009">
+					<ref bean="oilCardInfoModifyManagerImpl" />
+				</entry>
+
+				<!-- 生成充值申请业务订单号 -->
+				<entry key="Y300011">
+					<ref bean="rechargeApplyManagerImpl" />
+				</entry>
+
+				<!-- 查询账户余额 -->
+				<entry key="Y300012">
+					<ref bean="queryAcountBalanceManagerImpl" />
+				</entry>
+
+				<!-- 查询旺金币 -->
+				<entry key="Y300013">
+					<ref bean="queryCionCountManagerImpl" />
+				</entry>
+
+				<!-- 查询交易记录 -->
+				<entry key="Y300014">
+					<ref bean="queryTradeRecordListManagerImpl" />
+				</entry>
+
+				<!-- 查询单条交易记录详情 -->
+				<entry key="Y300015">
+					<ref bean="queryTradeRecordInfoManagerImpl" />
+				</entry>
+
+				<!-- 查询交易明细列表 -->
+				<entry key="Y300016">
+					<ref bean="queryInAndOutListManagerImpl" />
+				</entry>
+
+				<!-- 查询资金账户充油卡详情 -->
+				<entry key="Y300018">
+					<ref bean="queryAccountTradeInfoManageImpl" />
+				</entry>
+
+				<!-- 发票添加 -->
+				<entry key="Y300020">
+					<ref bean="billAddManagerImpl" />
+				</entry>
+
+				<!-- 发票详情 -->
+				<entry key="Y300021">
+					<ref bean="billInfoManagerImpl" />
+				</entry>
+
+				<!-- 发票列表 -->
+				<entry key="Y300022">
+					<ref bean="billListManagerImpl" />
+				</entry>
+
+				<!-- 发票删除 -->
+				<entry key="Y300023">
+					<ref bean="billDelManagerImpl" />
+				</entry>
+
+				<!-- 发票开票申请 -->
+				<entry key="Y300024">
+					<ref bean="billApplyManagerImpl" />
+				</entry>
+
+				<!-- 发票开票详情 -->
+				<entry key="Y300025">
+					<ref bean="billApplyInfoManagerImpl" />
+				</entry>
+
+				<!-- 发票开票删除 -->
+				<entry key="Y300026">
+					<ref bean="billApplyDelManagerImpl" />
+				</entry>
+
+				<!-- 发票开票列表 -->
+				<entry key="Y300027">
+					<ref bean="billApplyListManagerImpl" />
+				</entry>
+
+				<!-- 邮寄地址添加 -->
+				<entry key="Y300028">
+					<ref bean="postAddressAddorUpdateManagerImpl" />
+				</entry>
+				<!-- 邮寄地址详情 -->
+				<entry key="Y300029">
+					<ref bean="postAddressInfoManagerImpl" />
+				</entry>
+				<!-- 邮寄地址删除 -->
+				<entry key="Y300030">
+					<ref bean="postAddressDelManagerImpl" />
+				</entry>
+				<!-- 邮寄地址列表 -->
+				<entry key="Y300031">
+					<ref bean="postAddressListManagerImpl" />
+				</entry>
+				
+				<!-- 帐卡充值支付 -->
+				<entry key="Y300032">
+					<ref bean="accountToOilCardManagerImpl" />
+				</entry>
+
+				<!-- 支付所有接口(以Z开头) -->
+
+				<!-- 修改支付密码 -->
+				<entry key="Z000001">
+					<ref bean="modifyPayPasswordManagerImpl" />
+				</entry>
+
+				<!-- 设置支付密码 -->
+				<entry key="Z000002">
+					<ref bean="setPayPasswordManagerImpl" />
+				</entry>
+
+				<!-- 验证支付密码是否正确 -->
+				<entry key="Z000003">
+					<ref bean="isPayPasswordManagerImpl" />
+				</entry>
+
+				<!-- 验证是否有支付密码 -->
+				<entry key="Z000004">
+					<ref bean="isSetPayPasswordManagerImpl" />
+				</entry>
+
+				<!-- 获取"油卡充值"易宝快捷支付URL地址  -->
+				<entry key="Z000005">
+					<ref bean="getCardRechargeUrlManagerImpl" />
+				</entry>
+
+				<!-- 根据用户Id查询帐户 -->
+				<entry key="Z000006">
+					<ref bean="queryAccountInfoByUserIdManagerImpl" />
+				</entry>
+				
+				<!-- 创建帐户 （这个接口现在用不到） -->
+				<!-- <entry key="Z000007">
+					<ref bean="createAccountManagerImpl" />
+				</entry> -->
+				
+				<!-- 发送短信验证码 -->
+				<entry key="Z000008">
+					<ref bean="getSmsCodeManagerImpl" />
+				</entry>
+				
+				<!-- 查询支付中心指定账户的收入支出交易列表 -->
+				<entry key="Z000009">
+					<ref bean="queryPayCenterTradeListImpl" />
+				</entry>
+				
+				<!-- 查询支付中心指定账户的单个交易明细信息 -->
+				<entry key="Z000010">
+					<ref bean="queryPayCenterTradeInfoImpl" />
+				</entry>
+				
+				<!-- 获取"帐户充值"易宝快捷支付URL地址 -->
+				<entry key="Z000011">
+					<ref bean="getAccountRechargeUrlManagerImpl" />
+				</entry>
+				
+				<!-- 账户充值 -->
+				<entry key="Y300017">
+					<ref bean="accountRechargeManagerImpl" />
+				</entry>
+				
+                <!-- 查询收款人列表 -->
+				<entry key="Y300010">
+					<ref bean="queryPayeeListManagerImpl" />
+				</entry>
+
+				<!-- 附件上传处理 -->
+				<entry key="Y900001">
+					<ref bean="mobileAppMongoServiceImpl" />
+				</entry>
+				
+				<!-- 发送短信 -->
+				<entry key="Y900002">
+					<ref bean="sendMobileMsgServiceImpl" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans>

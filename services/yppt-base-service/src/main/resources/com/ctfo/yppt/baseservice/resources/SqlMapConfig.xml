@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/daox/sqlmap/Generic_SqlMap.xml" />
+	<!-- base service dao's bean -->
+	<sqlMap resource="com/ctfo/base/service/dao/sqlmap/SimpleCode_SqlMap.xml" />	
+	<sqlMap resource="com/ctfo/base/service/dao/sqlmap/ZoneCode_SqlMap.xml" />	
+	
+	<!-- yppt service dao's bean -->
+	
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/system/sqlmap/UserStat_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/system/sqlmap/CardStat_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/system/sqlmap/ICCardAccountConfig_SqlMap.xml" />
+	<!-- card manager 	-->
+
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/card/sqlmap/ICCard_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/card/sqlmap/ICCardMain_SqlMap.xml" />
+
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/card/sqlmap/ICCardApply_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/card/sqlmap/ICCardApplyDetail_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/card/sqlmap/ICCardApplyProcessLog_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/card/sqlmap/ICCardCreditAccountIO_SqlMap.xml" />
+    <sqlMap resource="com/ctfo/yppt/baseservice/daox/sqlmap/ICCard_Apply_SqlMap_Extend.xml" />
+
+
+	
+	<!-- Invoice -->
+
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/invoice/sqlmap/ICCardInvoiceApply_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/invoice/sqlmap/ICCardInvoiceApplyProcessLog_SqlMap.xml" />
+	
+	<!-- Trade -->
+
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/trade/sqlmap/ICCardMainTradeInfo_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/trade/sqlmap/ICCardTradeInfo_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/trade/sqlmap/ICCardTradeInfoHistory_SqlMap.xml" />
+
+	
+	<!-- Rebate -->
+
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/rebate/sqlmap/ICCardRebateProcessLog_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/rebate/sqlmap/ICRebateMonthMess_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/rebate/sqlmap/ICRebateMessMember_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/rebate/sqlmap/ICRebateMessCard_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/rebate/sqlmap/ICRebateInfo_SqlMap.xml" />
+
+	
+	<!-- Rechange -->
+
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/recharge/sqlmap/ICRechargeApply_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/recharge/sqlmap/ICRechargeApplyDetail_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/recharge/sqlmap/ICRechargeTransferDetail_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/recharge/sqlmap/ICCardRechangeProcessLog_SqlMap.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/dao/recharge/sqlmap/ICCardCreditOrder_SqlMap.xml" />
+		<sqlMap resource="com/ctfo/yppt/baseservice/dao/recharge/sqlmap/ICCardPaymentOrder_SqlMap.xml" />
+	
+	<!-- all extend sql map  
+	<sqlMap resource="com/ctfo/yppt/baseservice/daox/sqlmap/SimpleCode_SqlMap_Extend.xml" />
+	-->	
+	<sqlMap resource="com/ctfo/yppt/baseservice/daox/sqlmap/ICRechargeApply_SqlMap_Extend.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/daox/sqlmap/ICCardTradeInfoHistory_SqlMap_Extend.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/daox/sqlmap/ICCardTradeInfo_SqlMap_Extend.xml" />
+	<sqlMap resource="com/ctfo/yppt/baseservice/daox/sqlmap/ICRebate_SqlMap_Extend.xml" />
+	
+</sqlMapConfig>

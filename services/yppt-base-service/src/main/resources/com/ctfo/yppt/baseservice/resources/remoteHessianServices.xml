@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- 1.码表管理服务hession -->
+	<bean name="/com.ctfo.base.service.intf.ISimpleCodeManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="SimpleCodeManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.base.service.intf.ISimpleCodeManager" />
+	</bean>
+	<!-- IC卡主卡管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.card.intf.IICCardMainManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardMainManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.card.intf.IICCardMainManager" />
+	</bean>
+
+	<!-- IC卡申请管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.card.intf.IICCardApplyManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardApplyManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.card.intf.IICCardApplyManager" />
+	</bean>
+
+	<!-- IC卡子卡管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.card.intf.IICCardManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.card.intf.IICCardManager" />
+	</bean>
+	
+	<!-- 旺金币 -->
+	<bean name="/com.ctfo.yppt.baseservice.credit.intf.IICCardCreditAccountManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardCreditAccountManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.credit.intf.IICCardCreditAccountManager" />
+	</bean>
+
+
+	<!-- IC卡消费统计管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.system.intf.IICCardStatManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardStatManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.system.intf.IICCardStatManager" />
+	</bean>
+
+
+	<!-- 用户返利统计 -->
+	<bean name="/com.ctfo.yppt.baseservice.system.intf.IUserStatManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="UserStatManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.system.intf.IUserStatManager" />
+	</bean>
+
+	<!--IC卡返利记录明细管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.rebate.intf.IICRebateInfoManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICRebateInfoManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.rebate.intf.IICRebateInfoManager" />
+	</bean>
+
+
+	<!-- IC卡月返利记录管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.rebate.intf.IICRebateMessCardManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICRebateMessCardManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.rebate.intf.IICRebateMessCardManager" />
+	</bean>
+
+	<!-- IC卡会员月返利记录管理 -->
+	<bean
+		name="/com.ctfo.yppt.baseservice.rebate.intf.IICRebateMessMemberManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICRebateMessMemberManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.rebate.intf.IICRebateMessMemberManager" />
+	</bean>
+
+	<!-- IC月返利记录管理. -->
+	<bean name="/com.ctfo.yppt.baseservice.rebate.intf.IICRebateMonthMessManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICRebateMonthMessManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.rebate.intf.IICRebateMonthMessManager" />
+	</bean>
+	
+	<!-- 开票管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.invoice.intf.IICCardInvoiceApplyManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardInvoiceApplyManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.invoice.intf.IICCardInvoiceApplyManager" />
+	</bean>
+	
+	<!-- 充值管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.recharge.intf.IICRechargeApplyManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICRechargeApplyManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.recharge.intf.IICRechargeApplyManager" />
+	</bean>
+	
+	<!-- 交易历史记录管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.trade.intf.IICCardTradeInfoHistoryManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardTradeInfoHistoryManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.trade.intf.IICCardTradeInfoHistoryManager" />
+	</bean>
+	
+	<!-- 交易记录管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.trade.intf.IICCardTradeInfoManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardTradeInfoManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.trade.intf.IICCardTradeInfoManager" />
+	</bean>
+	<!-- 主卡交易记录管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.trade.intf.IICCardMainTradeInfoManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICCardMainTradeInfoManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.trade.intf.IICCardMainTradeInfoManager" />
+	</bean>
+	
+	<!-- 积分收支交易记录管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.card.intf.IBaseLocalCreditManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="IBaseLocalCreditManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.card.intf.IBaseLocalCreditManager" />
+	</bean>
+	
+	<!-- 人工返利导入积分结算管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.rebate.intf.IRebateSettleCurrencyManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="IRebateSettleCurrencyManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.rebate.intf.IRebateSettleCurrencyManager" />
+	</bean>
+
+	<!-- 中石油/中石化账户管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.system.intf.IAccountManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="IAccountManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.system.intf.IAccountManager" />
+	</bean>
+	
+	<!-- 油品服务对外接口管理 -->
+	<bean name="/com.ctfo.base.service.intf.IStatDataManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="StatDataManager" />
+		<property name="serviceInterface"
+			value="com.ctfo.base.service.intf.IStatDataManager" />
+	</bean>
+	
+	<!-- 查询充值详情管理 -->
+	<bean name="/com.ctfo.yppt.baseservice.recharge.intf.IICRechargeApplyDetailManager"
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="ICRechargeApplyDetailManagerImpl" />
+		<property name="serviceInterface"
+			value="com.ctfo.yppt.baseservice.recharge.intf.IICRechargeApplyDetailManager" />
+	</bean>
+
+</beans>

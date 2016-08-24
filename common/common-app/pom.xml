@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ctfo.yppt</groupId>
+		<version>1.0.0</version>
+		<artifactId>parent</artifactId>
+	</parent>
+	
+	<groupId>com.ctfo.yppt.common</groupId>
+	<artifactId>base-app</artifactId>
+	<packaging>jar</packaging>
+	<name>apps base common</name>
+	<description>common app util and exception ...</description>
+	
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ctfo.yppt.common</groupId>
+			<artifactId>base-interface</artifactId>
+			<version>${version.yppt}</version>
+			
+		</dependency>	
+		<!-- 统一认证依赖 -->
+		<dependency>
+			<groupId>org.jasig.cas.client</groupId>
+			<artifactId>cas-client-core</artifactId>
+			<version>${version.cas-client}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.ctfo.tyrzpt</groupId>
+			<artifactId>tyrzpt-interface</artifactId>
+			<version>${version.tyrzpt}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctfo.tyrzpt</groupId>
+			<artifactId>mycas-client-support-uaa</artifactId>
+			<version>${version.tyrzpt}</version>
+		</dependency>
+		
+		
+		<!-- soa -->
+		<dependency>
+			<groupId>com.ctfo.common</groupId>
+			<artifactId>soa-interface</artifactId>
+			<version>${version.soa-interface}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctfo.common</groupId>
+			<artifactId>soa-hessian</artifactId>
+			<version>${version.soa-hessian}</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>com.ctfo.common</groupId>
+			<artifactId>soa-grid</artifactId>
+			<version>${version.soa-grid}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctfo.soa</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>${version.soa-dubbo}</version>
+		</dependency> -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${version.commons-lang}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctfo.csm</groupId>
+			<artifactId>FileService</artifactId>
+			<version>${version.FileService}</version>
+		</dependency>
+		
+		 <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${version.spring}</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${version.spring}</version>
+		</dependency>		
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-context-support</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>
+         <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-core</artifactId>  
+            <version>${version.spring}</version>  
+        </dependency>  
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${version.commons-beanutils}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${version.servlet-api}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${version.jackson}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${version.jackson}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${version.jackson}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${version.fileupload}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${version.jstl}</version>
+		</dependency>
+		<!-- regex util jar -->
+		<dependency>
+			<groupId>oro</groupId>
+			<artifactId>oro</artifactId>
+			<version>2.0.8</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.3</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+		
+	</dependencies>
+</project>
